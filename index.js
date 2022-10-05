@@ -19,7 +19,7 @@ for (let i=1;i<=2;i++){
 
     if (edad > 18){
         console.log("Es mayor de edad");
-        continue;
+        break;
     }
 
     else {
