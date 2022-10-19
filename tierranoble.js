@@ -55,6 +55,8 @@ let recomend = prompt("Se considera usted una persona que disfruta de experienci
 
     let selectAProd = parseInt(prompt(msjListaProductos));
 
-    const selectedProd = productos.find(componente => componente.id == selectAProd);
+    const selectedProd = productos.find((componente) => componente.id == selectAProd);
 
-    alert('Se ha agregado ${selectedProd.tipo} - {selectedProd.nombre} a tu lista de compras')
+    console.log(selectedProd);
+
+    alert(`Se ha agregado ${selectedProd.tipo} - ${selectedProd.nombre} a tu lista de compras`)
