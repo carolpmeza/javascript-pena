@@ -59,4 +59,4 @@ let recomend = prompt("Se considera usted una persona que disfruta de experienci
 
     console.log(selectedProd);
 
-    alert(`Se ha agregado ${selectedProd.tipo} - ${selectedProd.nombre} a tu lista de compras`)
+    alert(`Se ha agregado ${selectedProd.tipo} de ${selectedProd.nombre} a tu lista de compras`)
