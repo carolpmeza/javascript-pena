@@ -8,7 +8,7 @@ class misProductos {
         this.precio = precio;
 //METODO PARA PRECIO TOTAL CON IMPUESTOS
         this.sumarImp = function(){
-            this.precioTotal = (this.precio) + (this.precio * 0.18)
+            this.precioTotal = (this.precio) + (this.precio * 1.18)
         }
     }
 }
@@ -32,13 +32,13 @@ const productos = [producto0, producto1,producto2,producto3,producto4,producto5,
 
 
 //PROMPT CONDICIONAL TEST DE RECOMENDACIONES
-let recomend = prompt("Se considera usted una persona que disfruta de experiencias: A) bienestar B) gastronomicas");
+let recomend = prompt("(Seleccione el inciso correspondiente) Usted se considera una persona que disfruta de experiencias: A) Bienestar B) Gastronomicas");
 
-    if ( recomend.toLowerCase == "bienestar") {
-        alert("Te recomendamos nuestra seleccion de jabones artesanales para el autocuidado. Todos aportan diferentes beneficios. CONOCELOS!");
+    if ( recomend == "A") {
+        alert("Te recomendamos nuestra seleccion de jabones artesanales para el auto-cuidado. Todos aportan diferentes beneficios. CONOCELOS!");
     }
 
-    if (recomend.toLowerCase == "gastronomicas") {
+    if (recomend == "B") {
         alert("Te recomendamos nuestra seleccion de salsas gourmet, con exquisitos frutos secos y sabores unicos que te sorprenderan con todas tus comidas. PRUEBALAS!");
     }
 
@@ -59,4 +59,16 @@ let recomend = prompt("Se considera usted una persona que disfruta de experienci
 
     console.log(selectedProd);
 
-    alert(`Se ha agregado ${selectedProd.tipo} de ${selectedProd.nombre} a tu lista de compras`)
+    alert(`Se ha agregado "${selectedProd.tipo} de ${selectedProd.nombre}" a tu lista de compras`)
+
+    function renderBase() {
+        for (elem of productos){
+            let card = document.createElement("div")
+    
+            card.innerHTML = `<h2>${elem.tipo} de ${elem.nombre}</h2>
+                                <p>${elem.descripcion}</p>
+                                <h3>$${elem.precio} MXN</h3>
+                                <button value="comprar">Comprar</button>`
+            document.body.append(card)
+        }
+    }
