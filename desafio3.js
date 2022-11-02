@@ -123,4 +123,29 @@ function addToCartClicked(event){
 }
 
 
-
+function crearCartHeader(){
+    let shoppingCartHeader = document.querySelector(".shoppingCartHeader");
+    shoppingCartHeader.innerHTML = `<h1 class="text-center">Carrito de compras</h1>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <div class="shopping-cart-header">
+                        <h6>Producto</h6>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="shopping-cart-header">
+                        <h6 class="text-truncate">Precio</h6>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="shopping-cart-header">
+                        <h6>Cantidad</h6>
+                    </div>
+                </div>
+            </div>`;
+    
+           
+    }
+    
+    crearCartHeader()
