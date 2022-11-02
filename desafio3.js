@@ -40,7 +40,7 @@ function renderBootStrap(){
             <div class="card-body">
                 <h5 class="card-title">${elem.tipo} de ${elem.nombre}</h5>
                 <p class="card-text">${elem.descripcion}</p>
-                <h3>$${elem.precio} MXN</h3>
+                <h3 class="card-precio">$${elem.precio} MXN</h3>
                 <input type="button" onClick="agregarCarrito(${elem.id})" href="#" class="btn btn-secondary addToCart" value="Comprar">
             </div>
         </div>`
@@ -52,6 +52,7 @@ function renderBootStrap(){
 //CARRITO
 const arrayCarrito = [ ]
 
+//Agregar producto adicional
 class objCarrito{
     constructor(producto, cantidad){
         this.producto = producto;
@@ -69,6 +70,7 @@ class objCarrito{
     }
 }
 
+// Agregar un producto al carrito
 function agregarCarrito(prod){
 
     let existenciaCarrito = arrayCarrito.find(e => e.producto == prod)
@@ -92,13 +94,59 @@ function agregarCarrito(prod){
 
 }
 
+//creaer render de tarjetas bootstrap
 renderBootStrap()
 
+// Funcionalidad del carrito
 const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
 addToShoppingCartButtons.forEach((addToCartButton) => {
-    addToCartButton.addEventListener('click', () => console.log("Actualizando el carrito"));
+    addToCartButton.addEventListener('click', addToCartClicked, () => console.log("Actualizando el carrito"));
 });
 
+const shoppingCartItemsContainer = document.querySelector(
+    '.shoppingCartItemsContainer'
+);
+
+function addToCartClicked(event){
+    const button = event.target;
+    const item = button.closest('.card');
+
+    const itemTitle = item.querySelector('.card-title').textContent;
+    const itemPrice = item.querySelector('.card-precio').textContent;
+    const itemImage = item.querySelector('.card-img-top').src;
+    console.log("Actualizando el carrito")
+    console.log( itemTitle, itemPrice)
 
 
+    addItemToShoppingCart(itemTitle, itemPrice, itemImage);
+}
+
+function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
+    const shoppingCartRow = document.createElement("div");
+    const shoppingCartContent =`
+    <div class="row shoppingCartItem">
+        <div class="col-6">
+            <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <img src=${itemImage} class="shopping-cart-image">
+                <h6 class="shopping-cart-item-title shoppingCartItemTitle text-truncate ml-3 mb-0">${itemTitle}</h6>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <p class="item-price mb-0 shoppingCartItemPrice">${itemPrice}</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div
+                class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+                <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+                    value="1">
+                <button class="btn btn-danger buttonDelete" type="button">X</button>
+            </div>
+        </div>
+    </div>`;
+    shoppingCartRow.innerHTML = shoppingCartContent
+    shoppingCartItemsContainer.append(shoppingCartRow);
+
+}
 
