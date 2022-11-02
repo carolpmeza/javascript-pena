@@ -64,7 +64,7 @@ let recomend = prompt("(Seleccione el inciso correspondiente) Usted se considera
     function renderBase() {
         for (elem of productos){
             let card = document.createElement("div")
-    
+            
             card.innerHTML = `<h2>${elem.tipo} de ${elem.nombre}</h2>
                                 <p>${elem.descripcion}</p>
                                 <h3>$${elem.precio} MXN</h3>
