@@ -41,7 +41,7 @@ function renderBootStrap(){
             <div class="card-body">
                 <h5 class="card-title">${elem.tipo} de ${elem.nombre}</h5>
                 <p class="card-text">${elem.descripcion}</p>
-                <h3 class="card-precio">$${elem.precio} MXN</h3>
+                <h3 class="card-precio">$${elem.precio}</h3><h4>MXN</h4>
                 <input type="button" onClick="agregarCarrito(${elem.id})" href="#" class="btn btn-secondary addToCart" value="Comprar">
             </div>
         </div>`
@@ -149,7 +149,7 @@ function crearCartHeader(){
     
     crearCartHeader()
 
-//nuevo codigo agregado
+//Mostrando productos en el carrito
     function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
         const elementsTitle = shoppingCartItemsContainer.getElementsByClassName(
         'shoppingCartItemTitle'
@@ -165,7 +165,7 @@ function crearCartHeader(){
             $('.toast').toast('show');
             updateShoppingCartTotal();
             return;
-        }
+            }
         }
 
         const shoppingCartRow = document.createElement('div');
@@ -202,5 +202,48 @@ function crearCartHeader(){
         .querySelector('.shoppingCartItemQuantity')
         .addEventListener('change', quantityChanged);
         
+        updateShoppingCartTotal();
+    }
+
+
+    function updateShoppingCartTotal() {
+        let total = 0;
+        const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
+        
+        const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
+        
+        shoppingCartItems.forEach((shoppingCartItem) => {
+        const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
+            '.shoppingCartItemPrice'
+        );
+        const shoppingCartItemPrice = Number(
+            shoppingCartItemPriceElement.textContent.replace('$', '')
+        );
+        const shoppingCartItemQuantityElement = shoppingCartItem.querySelector(
+            '.shoppingCartItemQuantity'
+        );
+        const shoppingCartItemQuantity = Number(
+        shoppingCartItemQuantityElement.value
+        );
+          total = parseFloat(total) + parseFloat(shoppingCartItemPrice) * parseFloat(shoppingCartItemQuantity);
+        });
+        shoppingCartTotal.innerHTML = `$${total.toFixed(2)} MXN`;
+        console.log(total)
+    }
+
+    function removeShoppingCartItem(event) {
+        const buttonClicked = event.target;
+        buttonClicked.closest('.shoppingCartItem').remove();
+        updateShoppingCartTotal();
+    }
+    
+    function quantityChanged(event) {
+        const input = event.target;
+        input.value <= 0 ? (input.value = 1) : null;
+        updateShoppingCartTotal();
+    }
+    
+    function comprarButtonClicked() {
+        shoppingCartItemsContainer.innerHTML = '';
         updateShoppingCartTotal();
     }
