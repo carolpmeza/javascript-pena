@@ -61,6 +61,35 @@ function renderBootStrap(){
 }
 }
 
+//Productos desde JSON
+let productosJSON=[];
+
+//Renderizar desde JSON
+function renderJSON(){
+    let cardContainer = document.querySelector(".catProductosJSON");
+    for (elem of productosJSON){
+        cardContainer.innerHTML+= `
+        <div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
+            <img src="./media/${elem.imagen}" class="card-img-top" alt="imagen de ${elem.tipo} de ${elem.nombre}">
+            <div class="card-body">
+                <h5 class="card-title">${elem.tipo} de ${elem.nombre}</h5>
+                <p class="card-text">${elem.descripcion}</p>
+                <h3 class="card-precio">$${elem.precio}</h3><h4>MXN</h4>
+                <input type="button" onClick="agregarCarrito(${elem.id})" href="#" class="btn btn-secondary addToCart" value="Comprar">
+            </div>
+        </div>
+        `;
+    }
+}
+
+//GETJSON
+async function obtenerJSON() {
+    const URLJSON="productos.json";
+    const resp = await fetch(URLJSON);
+    const data = await resp.json();
+    productosJSON = data;
+    renderJSON();
+}
 
 //CARRITO
 const arrayCarrito = [ ]

@@ -24,6 +24,8 @@
         </div>
       </nav>
 
+      <img class="img-fluid" src="./media/banner-tierraNoble.png" alt="tierra noble productos artesanales">
+
   <!--Catalogo de productos-->
       <h1>Nuestra seleccion de Jabones</h1>
       <section class="container">
@@ -31,6 +33,14 @@
           
         </article>
       </section>
+
+  <!--Catalogo de productos JSON-->
+  <h1>Nuestra seleccion de Jabones JSON</h1>
+  <section class="container">
+    <article class="row catProductosJSON">
+      
+    </article>
+  </section>
 
   <!--Cart-->
       <section class="shoppingCartSection">
@@ -72,7 +82,62 @@
 
       </section>
 
+<section>
+  <h1>¿Quieres más información sobre nuestro productos?</h1>
+  <form class="form-contacto">
+    <legend>Formulario de contacto</legend>
+    <fieldset class="fieldset-contacto">
+    
+    <div>
+        <label for="nombre">Nombre y Apellido</label>
+        <input class="controls" type="text" name="nombre-contacto" id="nombre" placeholder="Nombre completo">
+    </div>
 
+    <div>
+        <label for="telefono-usuario">Telefono</label>
+        <input  class="controls" type="tel" id="tel-contacto" placeholder="Telefono personal">
+    </div>
+
+    <div>
+        <label for="email-usuario">Correo Electronico</label>
+        <input class="controls" type="email" id="email-contacto" name="email" placeholder="Correo Electronico">
+    </div>
+
+    <div>
+        <label for="Suscribirme al NewsLetter">Suscribirme al NewsLetter</label>
+        <input type="checkbox" id="newsletter" name="news-usuario">
+    </div>
+
+    <div>
+        <label for="contact-by">Metodo de contacto preferido:</label>
+
+        <label for="">Telefono</label>
+        <input type="radio" id="contacto" name="metodo-contacto" value="metodo-cont">
+
+        <label for="">Whatsapp</label>
+        <input type="radio" id="contacto" name="metodo-contacto" value="metodo-cont"> <!---When you want user to pick just 1 value, use same name and value -->
+    </div>
+
+    <div>
+        <label for="contact-source">Como te enteraste de nosotros?</label>
+        <select  class="controls"name="contact-source" id="contact-source">
+            <option value="source1">Instagram</option>
+            <option value="source2">Facebook</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="descripcion">Comentarios</label>
+        <textarea class="controls" cols="30" rows="10" id="comentario-contacto" placeholder="Ingrese sus comentarios"></textarea>  
+    </div>
+
+    <div>
+        <button class="boton-limpiar" type="reset">Limpiar todo</button>
+        <button class="boton-enviar" type="submit">Enviar</button>
+    </div>
+  </fieldset>
+  </form>
+</section>
 
 <!-- FOOTER -->
 <footer class="bg-dark p-3 mt-5">
