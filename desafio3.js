@@ -245,7 +245,7 @@ function crearCartHeader(){
         updateShoppingCartTotal();
     }
 
-
+//Calcular total
     function updateShoppingCartTotal() {
         let total = 0;
         const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
@@ -271,18 +271,19 @@ function crearCartHeader(){
         console.log(total)
     }
 
+    //Remover del carrito
     function removeShoppingCartItem(event) {
         const buttonClicked = event.target;
         buttonClicked.closest('.shoppingCartItem').remove();
         updateShoppingCartTotal();
     }
-    
+    //Cambiar cantidad
     function quantityChanged(event) {
         const input = event.target;
         input.value <= 0 ? (input.value = 1) : null;
         updateShoppingCartTotal();
     }
-    
+    //Boton Comprar
     function comprarButtonClicked() {
         shoppingCartItemsContainer.innerHTML = '';
         updateShoppingCartTotal();
