@@ -29,14 +29,14 @@ const productos = [producto0, producto1,producto2,producto3,producto4,producto5]
 
 
 
-//Tarjetas de los productos
+//RENDER Tarjetas de los productos
 function renderBootStrap(){
     let cardContainer = document.querySelector(".catProductos");
     for (elem of productos){
-        let card = document.createElement("div")
-
-        card.innerHTML = 
-        `<div class="card" style="width: 18rem;">
+        // let card = document.createElement("div")
+        // card.classname = `col-sm-2`
+        cardContainer.innerHTML+= `
+        <div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
             <img src="./media/${elem.imagen}" class="card-img-top" alt="imagen de ${elem.tipo} de ${elem.nombre}">
             <div class="card-body">
                 <h5 class="card-title">${elem.tipo} de ${elem.nombre}</h5>
@@ -45,7 +45,19 @@ function renderBootStrap(){
                 <input type="button" onClick="agregarCarrito(${elem.id})" href="#" class="btn btn-secondary addToCart" value="Comprar">
             </div>
         </div>`
-        cardContainer.appendChild(card)
+        
+
+        // card.innerHTML += `
+        // <div class="card col-lg-4 col-md-6 col-sm-12" style="width: 18rem;">
+        //     <img src="./media/${elem.imagen}" class="card-img-top" alt="imagen de ${elem.tipo} de ${elem.nombre}">
+        //     <div class="card-body">
+        //         <h5 class="card-title">${elem.tipo} de ${elem.nombre}</h5>
+        //         <p class="card-text">${elem.descripcion}</p>
+        //         <h3 class="card-precio">$${elem.precio}</h3><h4>MXN</h4>
+        //         <input type="button" onClick="agregarCarrito(${elem.id})" href="#" class="btn btn-secondary addToCart" value="Comprar">
+        //     </div>
+        // </div>`
+        // cardContainer.appendChild(card)
 }
 }
 
@@ -98,7 +110,7 @@ function agregarCarrito(prod){
 //creaer render de tarjetas bootstrap
 renderBootStrap()
 
-// Funcionalidad del carrito
+// Funcionalidad de agregar al carrito
 const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
 addToShoppingCartButtons.forEach((addToCartButton) => {
     addToCartButton.addEventListener('click', addToCartClicked, () => console.log("Actualizando el carrito"));
@@ -149,7 +161,7 @@ function crearCartHeader(){
     
     crearCartHeader()
 
-//Mostrando productos en el carrito
+//Mostrando listado de productos en el carrito
     function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
         const elementsTitle = shoppingCartItemsContainer.getElementsByClassName(
         'shoppingCartItemTitle'
@@ -162,8 +174,7 @@ function crearCartHeader(){
             '.shoppingCartItemQuantity'
             );
             elementQuantity.value++;
-            $('.toast').toast('show');
-            updateShoppingCartTotal();
+            
             return;
             }
         }
