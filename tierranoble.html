@@ -92,17 +92,17 @@
     
     <div>
         <label for="nombre">Nombre y Apellido</label>
-        <input class="controls" type="text" name="nombre-contacto" id="nombre" placeholder="Nombre completo">
+        <input class="controls" required type="text" name="nombre-contacto" id="nombre" placeholder="Nombre completo">
     </div>
 
     <div>
         <label for="telefono-usuario">Telefono</label>
-        <input  class="controls" type="tel" id="tel-contacto" placeholder="Telefono personal">
+        <input  class="controls" required type="tel" id="tel" placeholder="Telefono personal">
     </div>
 
     <div>
         <label for="email-usuario">Correo Electronico</label>
-        <input class="controls" type="email" id="email-contacto" name="email" placeholder="Correo Electronico">
+        <input class="controls" required type="email" id="email" name="email" placeholder="Correo Electronico">
     </div>
 
     <div>
@@ -114,15 +114,15 @@
         <label for="contact-by">Metodo de contacto preferido:</label>
 
         <label for="">Telefono</label>
-        <input type="radio" id="contacto" name="metodo-contacto" value="metodo-cont">
+        <input type="radio" id="metodo" name="metodo-contacto" value="metodo-cont">
 
         <label for="">Whatsapp</label>
-        <input type="radio" id="contacto" name="metodo-contacto" value="metodo-cont"> <!---When you want user to pick just 1 value, use same name and value -->
+        <input type="radio" id="metodo" name="metodo-contacto" value="metodo-cont"> <!---When you want user to pick just 1 value, use same name and value -->
     </div>
 
     <div>
         <label for="contact-source">Como te enteraste de nosotros?</label>
-        <select  class="controls"name="contact-source" id="contact-source">
+        <select  class="controls"name="source" id="contact-source">
             <option value="source1">Instagram</option>
             <option value="source2">Facebook</option>
         </select>
@@ -135,7 +135,7 @@
 
     <div>
         <button class="boton-limpiar" type="reset">Limpiar todo</button>
-        <button class="boton-enviar" type="submit">Enviar</button>
+        <button class="boton-enviar" type="submit" id="submit">Enviar</button>
     </div>
     <p class="warnings" id="warnings"></p>
   </fieldset>

@@ -290,30 +290,37 @@ function crearCartHeader(){
     }
 
     //FORMULARIO
-    function validarNombre(event){
-    const nombre = document.getElementsById("nombre")
-    const telefono = document.getElementsById("tel-contacto")
-    const correo = document.getElementsById("email-contacto")
-    const newsletter = document.getElementsById("news-usuario")
-    const contacto = document.getElementsById("metodo-contacto")
-    const contactSource = document.getElementsById("contact-source")
-    const form = document.getElementsById("form")
-    const alertas = document.getElementsById("warnings")
+    function formulario(){
+    const nombre = document.getElementsById("nombre");
+    const telefono = document.getElementsById("tel");
+    const correo = document.getElementsById("email");
+    const newsletter = document.getElementsById("newsletter");
+    const contacto = document.getElementsById("metodo");
+    const contactSource = document.getElementsById("source");
+    const form = document.getElementsById("form");
+    const parrafo = document.getElementsById("warnings");
 
     form.addEventListener("submit", e=>{
-        e.preventDefault()
         let warnings = ""
+        parrafo.innerHTML= ``;
+
+        e.preventDefault()
+
         if(nombre.value.length < 6){
+            warnings += `Nombre no valido <br>`
             console.log("Favor de incluir nombre(s) y apellido");
             Swal.fire({
                 title: '<strong><u> Nombre muy corto </u></strong>',
                 icon: 'info',
                 html:
-                ' Favor de incluir <b>nombre(s) y apellido </b>',
+                'Favor de incluir <b>nombre(s) y apellido.</b>',
                 showCloseButton: true,
                 showCancelButton: true,
                 focusConfirm: false,
             })
+        }
+        if(telefono.value.length < 10){
+            warnings += `Favor de ingresar telefono en formato a 10 digitos`
         }
     })
 }
